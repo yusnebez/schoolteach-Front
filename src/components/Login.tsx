@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {useHistory} from 'react-router-dom'
 
 
 
@@ -9,7 +10,7 @@ const Login = () => {
         const [pass, setPass] = React.useState('')
         const [error, setError] = React.useState('')
         const [logueado, setLogueado] = React.useState('')
-        
+        const history = useHistory();
 
         const procesarDatos = (e: { preventDefault: () => void }) =>  {
             e.preventDefault()
@@ -30,21 +31,50 @@ const Login = () => {
             }
             console.log('correcto...')
             setError('')
-    
             
-            axios.post('http://localhost:3012/login',{
+            if(!localStorage.getItem('token')){
+            axios.post('http://localhost:3015/login',{
                 email,
                 password: pass
              }).then((response) => {
+                 console.log('soy profesor',response.data.token)
                 localStorage.setItem('token',response.data.token)
                 localStorage.setItem('email',response.data.email)
                 setLogueado(response.data);
+                history.push('/Teacher');
                 });
             }
+            if(!localStorage.getItem('token')){
+            axios.post('http://localhost:3015/tutores/login',{
+                email,
+                password: pass
+             }).then((response) => {
+                console.log('soy tutor',response.data.token)
+                localStorage.setItem('token',response.data.token)
+                localStorage.setItem('email',response.data.email)
+                setLogueado(response.data);
+                
+                });
 
-        console.log(logueado)
+            }
+            if(!localStorage.getItem('token')){
+                axios.post('http://localhost:3015/students/login',{
+                    email,
+                    password: pass
+                 }).then((response) => {
+                    console.log('soy tutor',response.data.token)
+                    localStorage.setItem('token',response.data.token)
+                    localStorage.setItem('email',response.data.email)
+                    setLogueado(response.data);
+                    });
+    
+                }
+        }
+             
 
-        return (
+        
+
+        return(
             <div className="mt-5">
                 <h3 className="text-center">Registro de usuarios</h3>
                 <hr/>
@@ -91,5 +121,4 @@ const Login = () => {
         )
     }
     
-    export default Login
-    
+export default Login

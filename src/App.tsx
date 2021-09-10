@@ -8,6 +8,7 @@ import {
   Link,
   NavLink,
 } from "react-router-dom";
+import Teacher from './components/Teacher';
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/Teacher">
+            <Teacher/>
           </Route>
         </Switch>
       </div>
