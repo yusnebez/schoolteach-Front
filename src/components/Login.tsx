@@ -9,7 +9,7 @@ const Login = () => {
         const [email, setEmail] = React.useState('')
         const [pass, setPass] = React.useState('')
         const [error, setError] = React.useState('')
-        const [logueado, setLogueado] = React.useState('')
+        // const [logueado, setLogueado] = React.useState('')
         const history = useHistory();
 
         const procesarDatos = (e: { preventDefault: () => void }) =>  {
@@ -40,7 +40,7 @@ const Login = () => {
                  console.log('soy profesor',response.data.token)
                 localStorage.setItem('token',response.data.token)
                 localStorage.setItem('email',response.data.email)
-                setLogueado(response.data);
+                // setLogueado(response.data);
                 history.push('/Teacher');
                 });
             }
@@ -52,7 +52,7 @@ const Login = () => {
                 console.log('soy tutor',response.data.token)
                 localStorage.setItem('token',response.data.token)
                 localStorage.setItem('email',response.data.email)
-                setLogueado(response.data);
+                // setLogueado(response.data);
                 
                 });
 
@@ -65,7 +65,7 @@ const Login = () => {
                     console.log('soy tutor',response.data.token)
                     localStorage.setItem('token',response.data.token)
                     localStorage.setItem('email',response.data.email)
-                    setLogueado(response.data);
+                    //setLogueado(response.data);
                     });
     
                 }
