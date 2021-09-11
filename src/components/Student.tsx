@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom'
 
-const Teacher = () => {
+const Student = () => {
 
   const [tarea, setTarea] = React.useState('')
   const [tareas, setTareas]:any[] = React.useState([])
@@ -127,16 +127,9 @@ const Teacher = () => {
             <button onClick= {() => newStudent()} className="btn btn-primary btn-block" type="button">Crear estudiante</button>
             <button onClick= {() => newTutor()}  className="btn btn-dark btn-block" type="button">Crear tutor</button>
         </div>
-        <div className="col-4 btn-group-vertical">
-            <h4 className="text-center">
-                Acciones
-            </h4>
-            <button onClick= {() => newStudent()} className="btn btn-primary btn-block" type="button">Asignar estudiante</button>
-            <button onClick= {() => newTutor()}  className="btn btn-dark btn-block" type="button">Asignar tutor</button>
-        </div>
       </div>
     </div>
   );
 }
 
-export default Teacher;
+export default Student;

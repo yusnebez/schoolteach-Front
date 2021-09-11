@@ -9,6 +9,9 @@ import {
   NavLink,
 } from "react-router-dom";
 import Teacher from './components/Teacher';
+import Student from './components/Student';
+import Newstudent from './components/Newstudent';
+import Newtutor from './components/Newtutor';
 
 
 function App() {
@@ -32,6 +35,15 @@ function App() {
           </Route>
           <Route path="/Teacher">
             <Teacher/>
+          </Route>
+          <Route path="/Student">
+            <Student/>
+          </Route>
+          <Route path="/Newstudent">
+            <Newstudent/>
+          </Route>
+          <Route path="/Newtutor">
+            <Newtutor/>
           </Route>
         </Switch>
       </div>
