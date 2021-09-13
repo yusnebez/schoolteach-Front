@@ -12,6 +12,8 @@ import Teacher from './components/Teacher';
 import Student from './components/Student';
 import Newstudent from './components/Newstudent';
 import Newtutor from './components/Newtutor';
+import Asigntutor from './components/Asigntutor';
+import Asignstudent from './components/Asignstudent';
 
 
 function App() {
@@ -44,6 +46,12 @@ function App() {
           </Route>
           <Route path="/Newtutor">
             <Newtutor/>
+          </Route>
+          <Route path="/Asigntutor">
+            <Asigntutor/>
+          </Route>
+          <Route path="/Asignstudent">
+            <Asignstudent/>
           </Route>
         </Switch>
       </div>

@@ -33,8 +33,8 @@ const Signup = () => {
             console.log('correcto...')
             setError('')
     
-            
-            axios.post('http://localhost:3012/signup',{
+            console.log(pass)
+            axios.post('http://localhost:3016/signup',{
                 email,
                 password: pass,
                 nombre: name

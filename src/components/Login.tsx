@@ -33,19 +33,18 @@ const Login = () => {
             setError('')
             
             if(!localStorage.getItem('token')){
-            axios.post('http://localhost:3015/login',{
+            axios.post('http://localhost:3007/login',{
                 email,
                 password: pass
              }).then((response) => {
                  console.log('soy profesor',response.data.token)
                 localStorage.setItem('token',response.data.token)
                 localStorage.setItem('email',response.data.email)
-                // setLogueado(response.data);
                 history.push('/Teacher');
                 });
             }
             if(!localStorage.getItem('token')){
-            axios.post('http://localhost:3015/tutores/login',{
+            axios.post('http://localhost:3007/tutores/login',{
                 email,
                 password: pass
              }).then((response) => {
@@ -58,7 +57,7 @@ const Login = () => {
 
             }
             if(!localStorage.getItem('token')){
-                axios.post('http://localhost:3015/students/login',{
+                axios.post('http://localhost:3006/students/login',{
                     email,
                     password: pass
                  }).then((response) => {

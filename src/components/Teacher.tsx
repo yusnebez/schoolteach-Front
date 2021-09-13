@@ -6,39 +6,34 @@ const Teacher = () => {
 
   const [tarea, setTarea] = React.useState('')
   const [tareas, setTareas]:any[] = React.useState([])
-  const [modoEdicion, setModoEdicion] = React.useState(false)
+  // const [modoEdicion, setModoEdicion] = React.useState(false)
 //const [id, setId] = React.useState('')
-  const [error, setError] = React.useState('')
+  // const [error, setError] = React.useState('')
   const history = useHistory();
 
-  useEffect(() => {
-    
-    if(localStorage.getItem('token')){
-        axios.get('http://localhost:3015/student/all',{
-                headers:{
-                    token:localStorage.getItem('token')
-                }
-             }).then((response) => {
-                console.log(response.data)
-                
-            });
-        }
-    
-    });
+  
 
     const newStudent = () =>{
         history.push('/Newstudent');
-    }  
+    }
 
     const newTutor = () =>{
         history.push('/Newtutor');
+    }
+
+    const Asignstudent = () =>{
+        history.push('/Asignstudent');
+    }
+
+    const Asigntutor = () =>{
+        history.push('/Asigntutor');
     }
 
   const agregarTarea = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
     if(!tarea.trim()){
       console.log('Elemento Vacío')
-      setError('Escriba algo por favor...')
+      // setError('Escriba algo por favor...')
       return
     }
     console.log(tarea)
@@ -49,7 +44,7 @@ const Teacher = () => {
     ])
 
     setTarea('')
-    setError('')
+    // setError('')
   }
 
   const eliminarTarea = (id: any) => {
@@ -59,7 +54,7 @@ const Teacher = () => {
 
   const editar = (item:any) => {
     console.log(item)
-    setModoEdicion(true)
+    // setModoEdicion(true)
     setTarea(item.nombreTarea)
     // setId(item.id)
   }
@@ -68,16 +63,17 @@ const Teacher = () => {
     e.preventDefault()
     if(!tarea.trim()){
       console.log('Elemento Vacío')
-      setError('Escriba algo por favor...')
+      // setError('Escriba algo por favor...')
       return
     }
 
     
+
     // setTareas(arrayEditado)
-    setModoEdicion(false)
+    // setModoEdicion(false)
     setTarea('')
     // setId('')
-    setError('')
+    // setError('')
   }
 
   return (
@@ -99,9 +95,20 @@ const Teacher = () => {
   
                     <button 
                       className="btn btn-danger btn-sm float-right mx-2"
-                      onClick={() => eliminarTarea(item.id)}
+                      onClick={() => agregarTarea(item.id)}
                     >
-                      Eliminar
+                      No working
+                    </button>
+                    <button 
+                      className="btn btn-danger btn-sm float-right mx-2"
+                      onClick={() => eliminarTarea(item)}
+                    >
+                      No working
+                    </button><button 
+                      className="btn btn-danger btn-sm float-right mx-2"
+                      onClick={() => editarTarea(item)}
+                    >
+                      no working
                     </button>
   
                     <button 
@@ -116,8 +123,8 @@ const Teacher = () => {
               )
 
             }
-
-
+            
+            
           </ul>
         </div>
         <div className="col-4 btn-group-vertical">
@@ -131,8 +138,8 @@ const Teacher = () => {
             <h4 className="text-center">
                 Acciones
             </h4>
-            <button onClick= {() => newStudent()} className="btn btn-primary btn-block" type="button">Asignar estudiante</button>
-            <button onClick= {() => newTutor()}  className="btn btn-dark btn-block" type="button">Asignar tutor</button>
+            <button onClick= {() => Asignstudent()} className="btn btn-primary btn-block" type="button">Asignar estudiante</button>
+            <button onClick= {() => Asigntutor()}  className="btn btn-dark btn-block" type="button">Asignar tutor</button>
         </div>
       </div>
     </div>
